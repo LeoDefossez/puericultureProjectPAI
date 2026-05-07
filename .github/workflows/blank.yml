@@ -1,4 +1,4 @@
-name: CI Backend Platform
+name: CI
 
 on:
   pull_request:
@@ -19,18 +19,13 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      # 1. Installation de Supabase CLI
-      - name: Setup Supabase CLI
-        uses: supabase/setup-cli@v1
-        with:
-          version: latest
-
       # 2. Démarrage de Supabase
       # L'option --status force la CLI à attendre que les services soient "healthy"
       - name: Start Supabase Local
-        run: supabase start
+        working-directory: project/back
+        run: npx supabase start
 
-      # 3. Build & Tests 
+      # 3. Build & Tests
       - name: Build and Run Tests
         working-directory: project/back
         env:
