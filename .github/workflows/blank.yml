@@ -17,7 +17,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'maven'
+          cache: 'maven' 
 
       # 2. Démarrage de Supabase
       # L'option --status force la CLI à attendre que les services soient "healthy"
